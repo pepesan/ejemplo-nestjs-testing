@@ -1,7 +1,5 @@
 import { Body, Controller, Get, Param, Post, Query, Request } from "@nestjs/common";
-import { CreateObjectDto } from "../dto/create-object.dto";
-
-
+import { CreateObjectDto } from '../dto/create-object.dto';
 
 @Controller('user')
 export class UserController {
