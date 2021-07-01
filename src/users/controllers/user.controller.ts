@@ -1,4 +1,7 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Request } from "@nestjs/common";
+import { CreateObjectDto } from "../dto/create-object.dto";
+
+
 
 @Controller('user')
 export class UserController {
@@ -14,5 +17,17 @@ export class UserController {
   @Get(':id')
   findById(@Param() params) {
     return 'get /user/:id ' + params.id;
+  }
+  @Post('data')
+  postData(
+    @Query('username') username: string,
+    @Query('password') password: string,
+  ): string {
+    return 'post /user ' + username + ' ' + password;
+  }
+  @Post('dto')
+  async create(@Body() createDto: CreateObjectDto) {
+    // this.objects.push(createDto);
+    return `This action adds a new object with name: ${createDto.name}`;
   }
 }
